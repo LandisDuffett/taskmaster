@@ -20,7 +20,7 @@ export default class List {
   <form onsubmit="app.listController.addTask(event, '${this.id}')">
     <div class="form-group">
       <input type="text" name="taskName" class="form-control" placeholder="Enter Task Name...">
-        <button type="submit" class="close tinyfont" aria-label="Remove">
+        <button type="submit" class="close tinyfont mt-1" aria-label="Remove">
           <span>&plus;add task</span>
         </button>
       </div>

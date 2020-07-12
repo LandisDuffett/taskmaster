@@ -22,7 +22,7 @@
 <main class="container-fluid border shadow">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <form onsubmit="">
+      <form onsubmit="app.listController.addList(event)">
         <div class="form-group p-3 justify-content-center">
           <label for="listName">New List Name:</label>
           <input type="text" name="listName" class="form-control shadow" placeholder="Enter Name for This List..." />
@@ -36,7 +36,7 @@
       </form>
     </div>
   </div>
-  <div class="grid" id="lists">
+  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "gutter": 30 }' id="lists">
   </div>
 
 
@@ -58,15 +58,6 @@
   <script src="app/main.js" type="module"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('.grid').masonry({
-        // options
-        itemSelector: '.grid-item',
-        gutter: 20
-      });
-    });
-  </script>
 
 </body>
 

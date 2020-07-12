@@ -1,14 +1,109 @@
-import ListService from "../Services/ListService.js";
+import _listService from "../Services/ListService.js";
+import _store from "../store.js"
 
-//TODO Don't forget to render to the screen after every data change.
-function _drawLists() {}
-
+function _drawLists() {
+  let template = ""
+  let lists = _store.State.lists
+  lists.forEach(list => template += list.Template)
+  document.getElementById("lists").innerHTML = template
+}
 //Public
 export default class ListController {
   constructor() {
-    //NOTE: After the store loads, we can automatically call to draw the lists.
+    console.log("Hello from controller")
     _drawLists();
   }
 
   //TODO: Your app will need the ability to create, and delete both lists and listItems
+  addList(e) {
+    console.log("hello")
+    e.preventDefault();
+    let formData = e.target
+    let rawListData = {
+      name: formData.listName.value,
+      bg: formData.bgcolor.value,
+      font: formData.fontcolor.value
+    }
+    _listService.addList(rawListData)
+    formData.reset()
+    _drawLists()
+    window.location.reload()
+  }
+
+  addTask(event, listId) {
+    event.preventDefault();
+    let rawTaskData = event.target.taskName.value
+    _listService.addTask(rawTaskData, listId)
+    event.target.reset()
+    _drawLists()
+    window.location.reload()
+  }
+
+
+  /*deleteList(item) {
+    _listService.deleteList(item)
+    _drawLists()
+  }*/
+
+  deleteTask(item) {
+    swal({
+      title: "Confirm",
+      text: "Are you sure?",
+      buttons: {
+        cancel: true,
+        confirm: "Submit"
+      }
+    }).then(val => {
+      if (val) {
+        swal({
+          title: "Confirm",
+          text: "task has been deleted",
+          icon: "success"
+        });
+        for (let x = 0; x < _store.State.lists.length; x++) {
+          for (let y = 0; y < _store.State.lists[x].tasks.length; y++) {
+            if (_store.State.lists[x].tasks[y] == item) {
+              _store.State.lists[x].tasks.splice(y, 1)
+              _store.saveState()
+              _drawLists()
+              window.location.reload()
+            }
+          }
+
+        }
+
+      }
+      return
+    }
+    )
+  }
+
+  completeTask(item) {
+
+  }
+
+
+  deleteList(item) {
+    swal({
+      title: "Confirm",
+      text: "Are you sure?",
+      buttons: {
+        cancel: true,
+        confirm: "Submit"
+      }
+    }).then(val => {
+      if (val) {
+        swal({
+          title: "Confirm",
+          text: "list has been deleted",
+          icon: "success"
+        });
+        let indexToRemove = _store.State.lists.findIndex(list => list.id == item)
+        _store.State.lists.splice(indexToRemove, 1);
+        _store.saveState();
+        _drawLists();
+        window.location.reload();
+      }
+    });
+  }
 }

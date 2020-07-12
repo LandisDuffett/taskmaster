@@ -18,9 +18,57 @@ function _loadState() {
 _loadState();
 
 class Store {
-  /**
-   * Provides access to application state data
-   */
+  addTask(foundListIndex, rawTaskData) {
+    _state.lists[foundListIndex].tasks.push(rawTaskData)
+    this.saveState()
+  }
+
+  addList(finalList) {
+    _state.lists.push(finalList)
+    this.saveState()
+  }
+
+  /*deleteList(item) {
+    swal({
+      title: "Woo?",
+      text: "you!",
+      buttons: {
+        cancel: true,
+        confirm: "Submit"
+      }
+    }).then(val => {
+      if (val) {
+        let indexToRemove = _state.lists.findIndex(list => list.id == item)
+        _state.lists.splice(indexToRemove, 1);
+        this.saveState();
+        swal({
+          title: "joo",
+          text: "boo",
+          icon: "success"
+        });
+
+      }
+    });
+  }*/
+
+
+  /*deleteTask(t) {
+    let r = confirm("Are you sure?")
+    if (r == true) {
+      for (let x = 0; x < _state.lists.length; x++) {
+        for (let y = 0; y < _state.lists[x].tasks.length; y++) {
+          if (_state.lists[x].tasks[y] == t) {
+            _state.lists[x].tasks.splice(y, 1)
+            this.saveState()
+          }
+        }
+
+      }
+
+    }
+    return
+  }*/
+
   get State() {
     return _state;
   }
