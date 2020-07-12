@@ -1,0 +1,56 @@
+.grid {
+    background: #EEE
+}
+
+.grid-item {
+  width: auto;
+  height: auto;
+  float: left;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.title {
+    color: black; 
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+li {
+    display: list-item!important;
+}
+
+.between {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.funky {
+    font-family: monospace;
+}
+
+.ptop {
+    padding-top: 1rem;
+}
+
+.fontchange {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.tinyfont {
+    font-size: 0.7rem;
+    text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;  
+}
+
+.mar {
+    margin-top: 0.8em!important;
+}
