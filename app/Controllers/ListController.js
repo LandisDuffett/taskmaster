@@ -28,7 +28,6 @@ export default class ListController {
     _listService.addList(rawListData)
     formData.reset()
     _drawLists()
-    window.location.reload()
   }
 
   addTask(event, listId) {
@@ -40,7 +39,6 @@ export default class ListController {
     _listService.addTask(rawTaskData, listId)
     event.target.reset()
     _drawLists()
-    window.location.reload()
   }
 
   deleteTask(item) {
@@ -65,7 +63,6 @@ export default class ListController {
               _store.State.lists[x].tasks.splice(y, 1)
               _store.saveState()
               _drawLists()
-              window.location.reload()
             }
           }
 
@@ -80,7 +77,6 @@ export default class ListController {
   completeTask(item) {
     _listService.completeTask(item)
     _drawLists()
-    window.location.reload()
   }
 
 
@@ -105,7 +101,6 @@ export default class ListController {
         _store.State.lists.splice(indexToRemove, 1);
         _store.saveState();
         _drawLists();
-        window.location.reload();
       }
     });
   }
