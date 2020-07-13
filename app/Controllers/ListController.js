@@ -42,7 +42,6 @@ export default class ListController {
   }
 
   deleteTask(item) {
-    debugger
     swal({
       title: "Confirm",
       text: "Are you sure?",
