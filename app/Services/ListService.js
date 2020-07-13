@@ -28,6 +28,9 @@ class ListService {
     _store.addList(finalList)
   }
 
+  toggleForm() {
+    document.getElementById("listform").classList.toggle("hidden")
+  }
   completeTask(item) {
     _store.completeTask(item)
   }

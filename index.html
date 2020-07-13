@@ -16,11 +16,14 @@
       <h1 class="funky">Your List of Task Lists!
       </h1>
     </div>
+    <button class="btn btn-info border shadow rounded m-1" style="max-height: 3rem; max-width: 3rem; font-size: 0.6rem;"
+      title="toggle form" onclick="app.listController.toggleForm()">Toggle Form
+    </button>
   </div>
 </header>
 
 <main class="container-fluid border shadow">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" id="listform">
     <div class="col-12 col-md-8">
       <form onsubmit="app.listController.addList(event)">
         <div class="form-group p-3 justify-content-center">

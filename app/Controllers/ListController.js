@@ -41,6 +41,10 @@ export default class ListController {
     _drawLists()
   }
 
+  toggleForm() {
+    _listService.toggleForm()
+  }
+
   deleteTask(item) {
     swal({
       title: "Confirm",
