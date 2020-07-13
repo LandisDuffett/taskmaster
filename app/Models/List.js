@@ -29,9 +29,11 @@ export default class List {
     `
 
     this.tasks.forEach((task) => template += `
-    <li class="">${task}
-        <button type="button" class="close tinyfont mt-2" aria-label="Remove" onclick="app.listController.deleteTask('${task}')">
+    <li class="" style="text-decoration: ${task.strike};">${task.name}
+        <button type="button" class="close tinierfont mt-2" aria-label="Remove" onclick="app.listController.deleteTask('${task}')">
     &times;remove task</button>
+    <button type="button" class="close tinierfont mt-2" aria-label="Remove" onclick="app.listController.completeTask('${task.id}')">
+    &check;toggle completed</button>
 </li>`)
 
     template += `</ul>

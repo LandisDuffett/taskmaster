@@ -1,8 +1,9 @@
 import List from "./Models/List.js";
+import taskaroo from "./Models/task.js"
 
 let _state = {
   /** @type {List[]} */
-  lists: []
+  lists: [],
 };
 
 //NOTE You should not need to change the code from this point down
@@ -18,8 +19,8 @@ function _loadState() {
 _loadState();
 
 class Store {
-  addTask(foundListIndex, rawTaskData) {
-    _state.lists[foundListIndex].tasks.push(rawTaskData)
+  addTask(finalTask, foundListIndex) {
+    _state.lists[foundListIndex].tasks.push(finalTask)
     this.saveState()
   }
 
@@ -28,6 +29,19 @@ class Store {
     this.saveState()
   }
 
+  completeTask(item) {
+    for (let x = 0; x < _state.lists.length; x++) {
+      for (let y = 0; y < _state.lists[x].tasks.length; y++) {
+        if (_state.lists[x].tasks[y].id == item) {
+          if (!_state.lists[x].tasks[y].strike) {
+            _state.lists[x].tasks[y].strike = null;
+            _state.lists[x].tasks[y].strike = "line-through";
+          } else { delete _state.lists[x].tasks[y].strike }
+          this.saveState()
+        }
+      }
+    }
+  }
   /*deleteList(item) {
     swal({
       title: "Woo?",
@@ -46,7 +60,7 @@ class Store {
           text: "boo",
           icon: "success"
         });
-
+ 
       }
     });
   }*/
@@ -62,9 +76,9 @@ class Store {
             this.saveState()
           }
         }
-
+ 
       }
-
+ 
     }
     return
   }*/

@@ -58,14 +58,13 @@ li {
     0.5px -0.5px 0 #fff,
     -0.5px 0.5px 0 #fff,
     0.5px 0.5px 0 #fff;  
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .mar {
     margin-top: 0.8em!important;
 }
 
-.complete {
-    text-decoration: line-through;
-}
 
 .btn-xs {
     padding: 0.40rem .4rem; 

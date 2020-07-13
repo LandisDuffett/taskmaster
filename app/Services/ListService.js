@@ -1,5 +1,6 @@
 import _store from '../store.js'
 import List from "../Models/List.js";
+import taskaroo from '../Models/task.js';
 
 //Public
 class ListService {
@@ -16,8 +17,10 @@ class ListService {
     if (foundListIndex < 0) {
       console.error("No List");
       return
+    } else {
+      let finalTask = new taskaroo(rawTaskData)
+      _store.addTask(finalTask, foundListIndex)
     }
-    _store.addTask(foundListIndex, rawTaskData)
   }
 
   addList(rawListData) {
@@ -25,6 +28,9 @@ class ListService {
     _store.addList(finalList)
   }
 
+  completeTask(item) {
+    _store.completeTask(item)
+  }
 
   /*deleteList(item) {
     _store.deleteList(item)

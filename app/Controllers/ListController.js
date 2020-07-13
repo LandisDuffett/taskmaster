@@ -17,6 +17,7 @@ export default class ListController {
   //TODO: Your app will need the ability to create, and delete both lists and listItems
   addList(e) {
     console.log("hello")
+    debugger
     e.preventDefault();
     let formData = e.target
     let rawListData = {
@@ -32,20 +33,18 @@ export default class ListController {
 
   addTask(event, listId) {
     event.preventDefault();
-    let rawTaskData = event.target.taskName.value
+    let formData = event.target.taskName.value
+    let rawTaskData = {
+      name: formData
+    }
     _listService.addTask(rawTaskData, listId)
     event.target.reset()
     _drawLists()
     window.location.reload()
   }
 
-
-  /*deleteList(item) {
-    _listService.deleteList(item)
-    _drawLists()
-  }*/
-
   deleteTask(item) {
+    debugger
     swal({
       title: "Confirm",
       text: "Are you sure?",
@@ -79,8 +78,12 @@ export default class ListController {
   }
 
   completeTask(item) {
-
+    _listService.completeTask(item)
+    _drawLists()
+    window.location.reload()
   }
+
+
 
 
   deleteList(item) {
