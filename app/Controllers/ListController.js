@@ -17,7 +17,6 @@ export default class ListController {
   //TODO: Your app will need the ability to create, and delete both lists and listItems
   addList(e) {
     console.log("hello")
-    debugger
     e.preventDefault();
     let formData = e.target
     let rawListData = {
@@ -81,9 +80,6 @@ export default class ListController {
     _listService.completeTask(item)
     _drawLists()
   }
-
-
-
 
   deleteList(item) {
     swal({

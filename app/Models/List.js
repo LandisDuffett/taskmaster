@@ -12,6 +12,7 @@ export default class List {
 
   get Template() {
     let template =
+      /*html*/
       `<div class="grid-item" style="color: ${this.font}; background-color: ${this.bg};">
   <p class="fontchange between"><span>LIST: ${this.name}</span>
     <button type="button" class="close tinyfont" aria-label="Remove" onclick="app.listController.deleteList('${this.id}')">&times;remove list
@@ -28,7 +29,9 @@ export default class List {
     <ul class="pl-3">
     `
 
-    this.tasks.forEach((task) => template += `
+    this.tasks.forEach((task) => template +=
+      /*html*/
+      `
     <li class="" style="text-decoration: ${task.strike};">${task.name}
         <button type="button" class="close tinierfont mt-2" aria-label="Remove" onclick="app.listController.deleteTask('${task}')">
     &times;remove</button>
